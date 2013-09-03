@@ -66,24 +66,30 @@ a {
     <canvas id="binary-dots"></canvas> 
 
     <script>
-      var c = document.getElementById("binary-dots"),
-      ctx = c.getContext("2d");
+      var
       pixelPos = function (max, pixelSize) {
         return Math.round(Math.random() *  max / pixelSize) * pixelSize;
       },
       draw = function () {
         ctx.fillStyle="#444";
-        var pixelSize = 20
+        var pixelSize = 20;
         x = pixelPos(window.innerWidth, pixelSize);
         y = pixelPos(window.innerHeight, pixelSize);
         ctx.fillRect(x,y,pixelSize,pixelSize);
       },
       drawPage = function () {
+        var c = document.getElementById("binary-dots");
+        c.height = document.body.clientHeight;
+        c.width = document.body.clientWidth;        
+
+        window.ctx = c.getContext("2d");
         for (var i = 0 ; i < 1000; i++) {
           draw();
         }
       };
-      drawPage();
+                             
+      window.onload = drawPage;                   
+
     </script>
   </body>
 </html>
