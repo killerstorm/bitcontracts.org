@@ -1,17 +1,89 @@
+<!doctype html>
 <html>
+  <head>
+    <meta charset="UTF-8">
+    <title>BitContracts.org</title>
+    <link href='http://fonts.googleapis.com/css?family=Raleway:500' rel='stylesheet' type='text/css'>
+    <style>
+body {
+  font-family: 'Raleway', sans-serif;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  position: absolute;
+  bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  color: #222;
+}
+
+.main-content {
+  max-width: 350px;
+  margin: 0 auto;
+  background: #fff;
+  padding: 20px;
+}
+
+h1 {
+  font-size: 40px;
+  color: #96223f;
+}
+
+a {
+ color: #5f299e;
+}
+
+#binary-dots {
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  border: 0;
+  right: 0;
+}
+    </style>
+  </head>
   <body>
-    <h1>BitContracts.org</h1>
-    <h2>advanced Bitcoin R&amp;D</h2>
-    <p>We implement <em><a href="https://github.com/bitcoinx/colored-coin-tools/blob/master/colors.md">colored coin</a></em> software,
-such as WebcoinX web wallet (<a href="http://bitcoinx.github.io/webcoinx/">see demo</a>) and <a href="https://github.com/bitcoinx/coloredcoinlib">coloredcoinlib</a> (<a href="https://github.com/killerstorm/CCoinDemo">demo client in Python</a>).</p>
-    <p>We also plan to make Bitcoin software which will make use of advanced Bitcoin features such as <a href="http://en.bitcoin.it/wiki/Contracts">contracts</a> and multi-signature transactions to implement things like:
+    <div class="main-content">
+      <h1>BitContracts.org</h1>
+      <h2>advanced Bitcoin R&amp;D</h2>
+      <p>We implement <em><a href="https://github.com/bitcoinx/colored-coin-tools/blob/master/colors.md">colored coin</a></em> software,
+  such as WebcoinX web wallet (<a href="http://bitcoinx.github.io/webcoinx/">see demo</a>) and <a href="https://github.com/bitcoinx/coloredcoinlib">coloredcoinlib</a> (<a href="https://github.com/killerstorm/CCoinDemo">demo client in Python</a>).</p>
+      <p>We also plan to make Bitcoin software which will make use of advanced Bitcoin features such as <a href="http://en.bitcoin.it/wiki/Contracts">contracts</a> and multi-signature transactions to implement things like:
+      </p>
       <ul>
         <li>dispute mediation</li>
         <li>instant secure payments</li>
         <li>secure handling of users' funds</li>
         <li>p2p mixing</li>
       </ul>
-    </p>
-    <p>Contact: <a href="mailto:alex.mizrahi@gmail.com">alex.mizrahi@gmail.com</a></p>
+
+      <p>Contact: <a href="mailto:alex.mizrahi@gmail.com">alex.mizrahi@gmail.com</a></p>
+    </div>
+    <canvas id="binary-dots"></canvas> 
+
+    <script>
+      var c = document.getElementById("binary-dots"),
+      ctx = c.getContext("2d");
+      pixelPos = function (max, pixelSize) {
+        return Math.round(Math.random() *  max / pixelSize) * pixelSize;
+      },
+      draw = function () {
+        ctx.fillStyle="#444";
+        var pixelSize = 20
+        x = pixelPos(window.innerWidth, pixelSize);
+        y = pixelPos(window.innerHeight, pixelSize);
+        ctx.fillRect(x,y,pixelSize,pixelSize);
+      },
+      drawPage = function () {
+        for (var i = 0 ; i < 1000; i++) {
+          draw();
+        }
+      };
+      drawPage();
+    </script>
   </body>
 </html>
